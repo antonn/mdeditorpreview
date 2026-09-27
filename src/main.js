@@ -238,8 +238,15 @@ function applyPanes() {
   let visible = 0;
   for (const [name, box] of Object.entries(toggles)) {
     panesEl.classList.toggle(`hide-${name}`, !box.checked);
+    box.closest('label')?.classList.toggle('is-off', !box.checked);
     if (box.checked) visible += 1;
   }
+  // Only one pane left: its close button would leave nothing on screen.
+  const soleOpen = visible === 1;
+  document.querySelectorAll('.pane-close').forEach((btn) => {
+    btn.disabled = soleOpen;
+    btn.title = soleOpen ? 'At least one pane must stay open' : 'Close this pane (reopen it from the toolbar)';
+  });
   panesEl.classList.toggle('cols-2', visible === 2);
   panesEl.classList.toggle('cols-1', visible === 1);
   try {
@@ -259,6 +266,16 @@ for (const box of Object.values(toggles)) {
     applyPanes();
   });
 }
+
+// Close button in each pane header: same effect as unticking its toolbar box.
+document.querySelectorAll('.pane-close').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const box = toggles[btn.dataset.pane];
+    if (!box) return;
+    box.checked = false;
+    box.dispatchEvent(new Event('change'));
+  });
+});
 
 (function restorePanes() {
   try {

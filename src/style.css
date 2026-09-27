@@ -91,7 +91,10 @@ html, body {
   overflow: hidden;
 }
 .pane-title {
-  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px 4px 10px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -102,6 +105,20 @@ html, body {
 }
 .pane-title small { font-weight: 400; text-transform: none; letter-spacing: 0; margin-left: 6px; }
 .pane-body { flex: 1; min-height: 0; overflow: auto; }
+
+.pane-close {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.pane-close:hover { background: #fee2e2; color: var(--danger); }
+.toolbar .panes-label { color: var(--muted); font-size: 12px; }
+.toolbar .panes label.is-off { text-decoration: line-through; opacity: 0.7; }
 
 /* raw editor */
 #raw {

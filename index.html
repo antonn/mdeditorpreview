@@ -21,6 +21,7 @@
           <input id="file-input" type="file" accept=".md,.markdown,.txt,text/markdown,text/plain" hidden />
         </div>
         <div class="toolbar-group panes" role="group" aria-label="Visible panes">
+          <span class="panes-label">Panes:</span>
           <label><input type="checkbox" id="toggle-raw" checked /> Raw</label>
           <label><input type="checkbox" id="toggle-preview" checked /> Preview</label>
           <label><input type="checkbox" id="toggle-wysiwyg" checked /> WYSIWYG</label>
@@ -32,17 +33,17 @@
 
       <main class="panes-grid" id="panes">
         <section class="pane pane-raw" id="pane-raw" aria-label="Raw Markdown">
-          <div class="pane-title">Raw Markdown <small>paste or type here</small></div>
+          <div class="pane-title"><span>Raw Markdown <small>paste or type here</small></span><button type="button" class="pane-close" data-pane="raw" title="Close this pane (reopen it from the toolbar)" aria-label="Close pane">&times;</button></div>
           <textarea id="raw" spellcheck="false" wrap="off" placeholder="Paste your Markdown here..."></textarea>
         </section>
 
         <section class="pane pane-preview" id="pane-preview" aria-label="Preview">
-          <div class="pane-title">Preview <small>read-only</small></div>
+          <div class="pane-title"><span>Preview <small>read-only</small></span><button type="button" class="pane-close" data-pane="preview" title="Close this pane (reopen it from the toolbar)" aria-label="Close pane">&times;</button></div>
           <div id="preview" class="pane-body"></div>
         </section>
 
         <section class="pane pane-wysiwyg" id="pane-wysiwyg" aria-label="WYSIWYG editor">
-          <div class="pane-title">WYSIWYG <small>edit visually</small></div>
+          <div class="pane-title"><span>WYSIWYG <small>edit visually</small></span><button type="button" class="pane-close" data-pane="wysiwyg" title="Close this pane (reopen it from the toolbar)" aria-label="Close pane">&times;</button></div>
           <div id="wysiwyg" class="pane-body"></div>
         </section>
       </main>

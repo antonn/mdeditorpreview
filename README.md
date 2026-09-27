@@ -20,7 +20,8 @@ at runtime.
 - **File actions**: Open a local `.md` file (button, drag & drop, or Ctrl+O), Download as `.md`
   (Ctrl+S), Copy Markdown to clipboard, Clear.
 - **Draft kept in the browser** (localStorage) so a refresh does not lose work.
-- **Pane toggles** to show any combination of the three panes.
+- **Pane toggles**: close any pane with the × in its header or the checkboxes in the toolbar;
+  the remaining panes take up the freed space. The layout is remembered between visits.
 
 ## Security posture
 
