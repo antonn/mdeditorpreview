@@ -1,10 +1,9 @@
 # Markdown Editor & Preview
 
-A small, self-contained, in-browser Markdown editor for teams migrating wiki pages
-from Confluence to GitLab / GitHub wikis. Paste the Markdown of a wiki page, see it
-rendered instantly, and edit it either as raw text or in a WYSIWYG view. Everything
-stays in memory in the browser: there is no server component and no network call
-at runtime.
+A small, self-contained, in-browser Markdown editor and previewer. Paste or open any
+Markdown document, see it rendered instantly, and edit it either as raw text or in a
+WYSIWYG view. Everything stays in memory in the browser: there is no server component
+and no network call at runtime.
 
 ![three panes: raw markdown, preview, WYSIWYG](docs/screenshot.png)
 
@@ -12,7 +11,8 @@ at runtime.
 
 - **Three synchronised panes**: Raw Markdown (editable) · Preview (read-only) · WYSIWYG (editable).
   A change in either editor updates the other two panes live.
-- **GitLab / GitHub Flavored Markdown**: tables, task lists, fenced code, strikethrough, autolinks.
+- **GitHub Flavored Markdown (GFM)**: tables, task lists, fenced code, strikethrough, autolinks,
+  as used by GitHub and GitLab wikis and most Markdown tools.
 - **Syntax highlighting** for fenced code blocks (highlight.js, common languages).
 - **Mermaid diagrams** in ```` ```mermaid ```` blocks, rendered in the preview.
 - **draw.io diagrams** in ```` ```drawio ```` blocks (paste the diagram XML, `<mxfile>` or
@@ -25,7 +25,7 @@ at runtime.
 
 ## Security posture
 
-Built for locked-down corporate networks:
+Designed to run on restricted networks with no external dependencies:
 
 - No CDN. All JavaScript is bundled into `dist/` at build time and served from the same
   place as `index.html`. The build makes **no outbound request** at runtime (verified with
@@ -99,9 +99,9 @@ Package `overrides` in `package.json` pin transitive dependencies to patched rel
   `public/vendor/drawio/` if you need them.
 - **Math in draw.io diagrams** needs MathJax, which is not bundled. See
   `public/vendor/drawio/math4/es5/startup.js` for how to drop it in.
-- **Images and attachments** referenced with relative paths (e.g. `uploads/…` or
-  `diagram.drawio.svg`) cannot be resolved because there is no wiki repository behind the
-  editor; they render as broken images in the preview. Absolute URLs work.
+- **Images and attachments** referenced with relative paths (e.g. `images/…` or
+  `diagram.drawio.svg`) cannot be resolved because there is no file system or repository
+  behind the editor; they render as broken images in the preview. Absolute URLs work.
 - Mermaid diagrams are rendered in the preview only; in the WYSIWYG pane they appear as an
   editable code block, which keeps the source intact when converting back to Markdown.
 - Single document at a time, no multi-tab or scroll sync yet.

@@ -2,7 +2,7 @@
   "name": "mdeditorpreview",
   "version": "0.1.0",
   "private": true,
-  "description": "Lightweight in-browser Markdown editor with live preview and WYSIWYG pane for GitLab / GitHub wiki pages",
+  "description": "Lightweight in-browser Markdown editor with live preview and WYSIWYG pane",
   "type": "module",
   "scripts": {
     "dev": "vite",
