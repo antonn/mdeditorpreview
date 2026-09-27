@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="no-referrer" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%232563eb%27/%3E%3Ctext x=%2716%27 y=%2722%27 font-family=%27sans-serif%27 font-weight=%27700%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27%3EM%3C/text%3E%3C/svg%3E" />
+    <title>Markdown Editor &amp; Preview</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="toolbar">
+        <div class="toolbar-group brand">
+          <span class="brand-title">Markdown Editor &amp; Preview</span>
+        </div>
+        <div class="toolbar-group">
+          <button id="btn-open" type="button" title="Open a .md file from your computer (Ctrl+O)">Open .md</button>
+          <button id="btn-download" type="button" title="Download the current Markdown as a file (Ctrl+S)">Download .md</button>
+          <button id="btn-copy" type="button" title="Copy the current Markdown to the clipboard">Copy Markdown</button>
+          <button id="btn-clear" type="button" title="Clear the document">Clear</button>
+          <input id="file-input" type="file" accept=".md,.markdown,.txt,text/markdown,text/plain" hidden />
+        </div>
+        <div class="toolbar-group panes" role="group" aria-label="Visible panes">
+          <label><input type="checkbox" id="toggle-raw" checked /> Raw</label>
+          <label><input type="checkbox" id="toggle-preview" checked /> Preview</label>
+          <label><input type="checkbox" id="toggle-wysiwyg" checked /> WYSIWYG</label>
+        </div>
+        <div class="toolbar-group status">
+          <span id="status" aria-live="polite"></span>
+        </div>
+      </header>
+
+      <main class="panes-grid" id="panes">
+        <section class="pane pane-raw" id="pane-raw" aria-label="Raw Markdown">
+          <div class="pane-title">Raw Markdown <small>paste or type here</small></div>
+          <textarea id="raw" spellcheck="false" wrap="off" placeholder="Paste your Markdown here..."></textarea>
+        </section>
+
+        <section class="pane pane-preview" id="pane-preview" aria-label="Preview">
+          <div class="pane-title">Preview <small>read-only</small></div>
+          <div id="preview" class="pane-body"></div>
+        </section>
+
+        <section class="pane pane-wysiwyg" id="pane-wysiwyg" aria-label="WYSIWYG editor">
+          <div class="pane-title">WYSIWYG <small>edit visually</small></div>
+          <div id="wysiwyg" class="pane-body"></div>
+        </section>
+      </main>
+
+      <div id="drop-overlay" class="drop-overlay" hidden>Drop a Markdown file to open it</div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
